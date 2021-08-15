@@ -29,7 +29,7 @@ const ResetPasswordScreen = ({ history, match }) => {
             return setError("Passwords don't match");
         }
 
-        console.log('antes del try')
+
 
         try {
             const { data } = await axios.put(
@@ -40,7 +40,7 @@ const ResetPasswordScreen = ({ history, match }) => {
                 config
             );
 
-            console.log(data);
+
             setSuccess(data.data);
         } catch (error) {
             setError(error.response.data.error);

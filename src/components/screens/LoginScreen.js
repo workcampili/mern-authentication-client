@@ -30,16 +30,19 @@ const LoginScreen = ({ history }) => {
                 config
             );
 
-            console.log(data.token)
+
+
 
             localStorage.setItem("authToken", data.token);
 
             history.push("/");
         } catch (error) {
+
             setError(error.response.data.error);
             setTimeout(() => {
                 setError("");
             }, 5000);
+
         }
     };
 

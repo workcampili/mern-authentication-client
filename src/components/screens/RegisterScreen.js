@@ -43,7 +43,7 @@ const RegisterScreen = ({ history }) => {
             history.push("/");
 
         } catch (error) {
-            console.log(error)
+
             setError(error.response.data.error)
             setTimeout(() => {
                 setError('')

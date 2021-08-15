@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./PrivateScreen.css";
+import { capitalize } from '../../utils/'
 
 const PrivateScreen = ({ history }) => {
     const [error, setError] = useState("");
@@ -11,6 +12,8 @@ const PrivateScreen = ({ history }) => {
         localStorage.removeItem('authToken')
         history.push('/login')
     }
+
+
 
     useEffect(() => {
         const fetchPrivateDate = async () => {
@@ -23,7 +26,7 @@ const PrivateScreen = ({ history }) => {
 
             try {
                 const { data } = await axios.get("/api/private", config);
-                console.log(data.user)
+
                 setPrivateData(data.data);
                 setUser(data.user)
             } catch (error) {
@@ -40,6 +43,7 @@ const PrivateScreen = ({ history }) => {
     ) : (
         <>
             <h1>{`Welcome ${user.email}`}</h1>
+            <h1>{user.username && `Welcome ${capitalize(user.username)}`}</h1>
             <div style={{ background: "green", color: "white" }}>{privateData}</div>
             <button onClick={handleLogout}>Logout</button>
         </>
